@@ -1,18 +1,6 @@
-Title - Open Access to Success 
+Claifai Face Recongaiton ***not working- keep getting 400 - Api key is correct***  - Autism and the development of face processing studies show that this is due to the inability to make eye contact. For Autism. -(https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-face1/)
 
-Quick blurb - This website will outline my journey with late life diagnosis as a person with high function autism and phonetic dyslexia. Which is quite normal due to the fact women present differently than males. In addition, the previous studies on the topic where conducted on cis straight white males. Just keep in mind that just because you met one person with autism you have met everyone. It is a spectrum disorder in which symptoms are not linear and it affects individuals abilities in different ways. *key words* Universal Design and Accessibility is the focus of my website design.
-
-
-APIs I plan to use:
-Grammarbot (assist with spelling and grammar) https://rapidapi.com/grammarbot/api/grammarbot/)  // or Language Tool (https://rapidapi.com/dnaber/api/languagetool/). Need to see which one offers the best range of services for dyslexia.
-
-Speech-To-Text ( Convert speech to text - https://rapidapi.com/voicerss/api/text-to-speech-1/ ) for dyslexia. 
-
-
-Microsoft Face  - Autism and the development of face processing studies show that this is due to the inability to make eye contact. For Autism. -(https://rapidapi.com/microsoft-azure-org-microsoft-cognitive-services/api/microsoft-face1/)
-
-Finally I may try to incorporate urban dictionary for phrases and words. Since some people with autism tend to take things very literally and have trouble with phrase usage and jokes. For autism. (https://rapidapi.com/community/api/urban-dictionary/) // or meme generator https://rapidapi.com/meme-generator-api-meme-generator-api-default/api/meme-generator/
-
+** didn't complete **Finally I may try to incorporate urban dictionary for phrases and words. Since some people with autism tend to take things very literally and have trouble with phrase usage and jokes. For autism. (https://rapidapi.com/community/api/urban-dictionary/) // or meme generator https://rapidapi.com/meme-generator-api-meme-generator-api-default/api/meme-generator/
 
 
 Module 2 Final Project Evaluation
