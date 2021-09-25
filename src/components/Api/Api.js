@@ -1,125 +1,185 @@
+// import { outerProduct } from "@tensorflow/tfjs-core";
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 // import { ResponsiveEmbed } from 'react-bootstrap';
+// import axios from "axios";
 import "../CSS/Api.css";
 
 
 const languagetool = require("languagetool-api");
 
-const initialText = `
-Typos hapen. We striving to correct them.`;
+// const initialText = `Typos hapen. We striving to correct them. Individuals with dyslexia often struggles with spelling, grammar, reading and writing. The Language Tool Api is used to check a spell checking app.  input your own text to get it proofread.`;
 
 
 
 const Api = () => {
-  // let [response, setResponse] = useState([]);
-  const [text, setText] = useState(initialText);
+ 
+  const [info, setInfo] = useState([]);
   const [mistakes, setMistakes] = useState([])
 
 
 
-const handleChange= text => {
-  checkText(text);
-};
-
-const checkText = text => {
-  console.log(text, languagetool);
-  languagetool.check(
-    {
-      language: "en-US",
-      text: text
-    },
-    (err, res) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(res);
-        languagetool.showMistakes(res, mis => {
-          setMistakes(mis)
-        });
-
-        languagetool.bestSuggestion(res, mis => {
-          setMistakes(mis);
-        });
-      }
-    }
-  );
-};
-
-  // const [input, setInput] = useState("");
-
-  // const handleChange = (e) => {
-  //   setInput(e.target.value);
-  //   console.log(input);
-  // };
-
-
-    // const options = {
-    //   method: 'POST',
-    //   url: 'https://dnaber-languagetool.p.rapidapi.com/v2/check',
-    //   headers: {
-    //     'content-type': 'application/x-www-form-urlencoded',
-    //     'x-rapidapi-host': 'dnaber-languagetool.p.rapidapi.com',
-    //     'x-rapidapi-key': '32bc752900msh2a99aca8a92e59cp1f0926jsn87c679c7ea73'
-    //   },
-    //   data: {text: 'This is a error.', language: 'en-US'}
-    // };
-    
-    // axios.request(options).then(function (response) {
-    //   console.log(response.data);
-    // }).catch(function (error) {
-    //   console.error(error);
-    // });
-    
-    // fetch("https://dnaber-languagetool.p.rapidapi.com/v2/check", {
-    //   "method": "POST",
-    //   "headers": {
-    //     "content-type": "application/x-www-form-urlencoded",
-    //     "x-rapidapi-host": "dnaber-languagetool.p.rapidapi.com",
-    //     "x-rapidapi-key": "32bc752900msh2a99aca8a92e59cp1f0926jsn87c679c7ea73"
-    //   },
-    //   "body": {
-    //     "text": "This is a error.",
-    //     "language": "en-US"
-    //   }
-    // })
-    // .then(response => {
-    //   console.log(response);
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // });
-
-    // }
+  const handleSubmit =
+    (e) =>
+    e.preventDefault();
+  console.log();
   
-    return (
-      <div className="ContentWrapper">
-        <h1>
-          Proofreading API
-          <label htmlFor=""></label>
+  const handleChange = (e) => {
+    setInfo(e.target.value)
+    console.log(info)
+  };
  
-          <input 
-            onChange={handleChange}
-            id="proofreader"
-            type="text"
-            spellcheck={true} defaultValue={initialText}
-            
-          />
-        </h1>
-
-
-        {mistakes.map((item, index) => (
-          <p key={index}>{item.title}</p> 
-       ))}
-        <button type="button"
-
-onClick={() => handleChange(checkText)}>
-          Click Here
-        </button>
-      </div>
-    );
   
+  const checkInfo = text => {
+    console.log(text, languagetool);
+    languagetool.check(
+      {
+        language: "en-US",
+        text: text
+      },
+      (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(res);
+          languagetool.showMistakes(res, mis => {
+            setMistakes(mis)
+            console.log(mistakes)
+          });
+
+          languagetool.bestSuggestion(res, mis => {
+            setMistakes(mis);
+            console.log(mistakes)
+          });
+        }
+      }
+    );
+  };
+  
+  return (
+   
+    <div className="ContentWrapper">
+      <h1>
+        Proofreading API
+        <label htmlFor=""></label>
+        <input
+          onSubmit={handleSubmit}
+          onChange={handleChange}
+          id="info"
+          type="text"
+          spellcheck={true} placeholder="" />
+        
+
+          {/* <TextArea spellcheck={true} defaultValue={initialText} /> */}
+
+  {/* <
+    value={text}
+    options={options}
+    onBeforeChange={(editor, data, value) => {
+      setText(value);
+    }}
+    onChange={(editor, data, value) => {}}
+//   /> */}
+
+{/* // <button onClick={() => handleClick(text)}>test</button> */}
+      </h1>
+
+     
+
+        <button type="button" id="getproofreader"
+ onClick={() => checkInfo(info)}>
+          Click Here
+      </button>
+      {mistakes.map((item, index) => 
+        console.log(item.bestSuggestion),
+        
+          // < p key = { index } > { item.bestSuggestion }</p>
+      
+      )}
+      
+<div className="api">
+
+  
+<ul>
+<h1 className= "access">Link to Api attempted using useContent</h1>
+
+<li>
+<Link className='navLinks' to='/Lan'>
+         API useContext
+          </Link>
+          </li>
+
+         </ul>
+
+</div>
+    </div>
+    
+    );
 };
 
 export default Api;
 
+
+//   <TextArea spellcheck={true} defaultValue={initialText} />
+
+//   <
+//     value={text}
+//     options={options}
+//     onBeforeChange={(editor, data, value) => {
+//       setText(value);
+//     }}
+//     onChange={(editor, data, value) => {}}
+//   />
+
+// <button onClick={() => handleClick(text)}>test</button>
+
+
+// export default function Api  ()  {
+
+//   const initialText = [
+//     { result:`Typos hapen. We striving to correct them. Individuals with dyslexia often struggles with spelling, grammar, reading and writing. The Language Tool Api is used to check a spell checking app.  input your own text to get it proofread.`},
+//     { lastValues},
+//     { mistakes, setMistakes }
+//     ]
+  
+//   function useReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//   case"EDIT":
+//   //new js object to keep old state. spread operator... this allows us to override previous values.
+//   state = {
+//   ...state,
+//   output: state.output + action.payload,
+//   lastValues: [...state.lastValues, action.payload]
+//   };
+//   //state is handles objects and properties in an immutable way.
+//   break;
+//   case"CORRECT":
+//   state = {
+//     ...state,
+//     output: state.output + action.payload,
+//     lastValues: [...state.lastValues, action.payload]
+//   };
+//   break;
+//   }
+//   return state;
+//   }
+  
+//   const initialState = 
+//   result=
+//   store.subscribe(() => {
+//     console.log("Store updated!", store.getState());
+//   // payload is the place you change the state
+//   store.dispatch ({
+//     type: "EDIT",
+//     payload: newText
+//   }); 
+//   store.dispatch ({
+//     type: "CORRECT",
+//     payload: newText
+//   }); 
+  
+//   }
+  
+  
+  
 
