@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import "tachyons";
 import serviceWorker from "./serviceWorker.js";
-
-import Speechapp from './components/pages/Speechapp';
+import reportWebVitals from './reportWebVitals';
+;
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Speechapp/>
+  
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -20,3 +20,4 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
 serviceWorker();
+reportWebVitals();
