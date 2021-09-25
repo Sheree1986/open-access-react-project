@@ -25,13 +25,10 @@ class App extends Component {
   
   render() {
     return (
-      <>
-      {/* <Header /> */}
-     
+ 
+  
 
  <Router>
-
-
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
@@ -53,8 +50,8 @@ class App extends Component {
     </Router>
 
 
-    {/* <Footer /> */}
-    </>
+  
+ 
    
     );
   }
