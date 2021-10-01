@@ -4,12 +4,16 @@
   padding: 0;
   font-family: 'PT Sans', sans-serif;
 }
+
 .proofreader {
 
    width: 460px;
    height: 200px;}
 
 .ContentWrapper {
-  text-align: left;
+
+display: flex;
+justify-content: center;
+
 
 }
