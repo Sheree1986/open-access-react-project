@@ -1,65 +1,54 @@
-// import { outerProduct } from "@tensorflow/tfjs-core";
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-// import { ResponsiveEmbed } from 'react-bootstrap';
-// import axios from "axios";
-import "../CSS/Api.css";
+// import { Link } from "react-router-dom";
 
+import "../CSS/Api.css";
 
 const languagetool = require("languagetool-api");
 
 // const initialText = `Typos hapen. We striving to correct them. Individuals with dyslexia often struggles with spelling, grammar, reading and writing. The Language Tool Api is used to check a spell checking app.  input your own text to get it proofread.`;
 
-
-
 const Api = () => {
- 
   const [info, setInfo] = useState([]);
-  const [mistakes, setMistakes] = useState([])
+  const [mistakes, setMistakes] = useState([{}]);
 
-
-
-  const handleSubmit =
-    (e) =>
-    e.preventDefault();
+  const handleSubmit = (e) => e.preventDefault();
   console.log();
-  
+
   const handleChange = (e) => {
-    setInfo(e.target.value)
-    console.log(info)
+    setInfo(e.target.value);
+    console.log(info);
   };
- 
-  
-  const checkInfo = text => {
+
+  const checkInfo = (text) => {
     console.log(text, languagetool);
     languagetool.check(
       {
         language: "en-US",
-        text: text
+        text: text,
       },
       (err, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(res);
-          languagetool.showMistakes(res, mis => {
-            setMistakes(mis)
-            console.log(mistakes)
+          console.log("res", res);
+          languagetool.showMistakes(res, (mis) => {
+            setMistakes(mis);
+            // console.log("showMistakes", mistakes)
           });
 
-          languagetool.bestSuggestion(res, mis => {
+          languagetool.bestSuggestion(res, (mis) => {
             setMistakes(mis);
-            console.log(mistakes)
+            // console.log("mistakes", mistakes)
           });
         }
       }
     );
   };
-  
+  // const bestSuggestion =
+  console.log("mistakes", mistakes);
   return (
-   
-    <div className="ContentWrapper">
-      <h1>
+    <div className="access">
+      <h1 className="access">
         Proofreading API
         <label htmlFor=""></label>
         <input
@@ -67,57 +56,29 @@ const Api = () => {
           onChange={handleChange}
           id="info"
           type="text"
-          spellcheck={true} placeholder="" />
-        
-
-          {/* <TextArea spellcheck={true} defaultValue={initialText} /> */}
-
-  {/* <
-    value={text}
-    options={options}
-    onBeforeChange={(editor, data, value) => {
-      setText(value);
-    }}
-    onChange={(editor, data, value) => {}}
-//   /> */}
-
-{/* // <button onClick={() => handleClick(text)}>test</button> */}
+          spellcheck={true}
+          placeholder=""
+        />
+       
+    
       </h1>
 
-     
-
-        <button type="button" id="getproofreader"
- onClick={() => checkInfo(info)}>
-          Click Here
+      <button type="button" id="getproofreader" onClick={() => checkInfo(info)}>
+        Click Here
       </button>
-      {mistakes.map((item, index) => 
-        console.log(item.bestSuggestion),
+      {mistakes.map(
+        (item, index) => console.log(item.bestSuggestion)
+
         
-          // < p key = { index } > { item.bestSuggestion }</p>
-      
       )}
-      
-<div className="api">
-
-  
-<ul>
-<h1 className= "access">Link to Api attempted using useContent</h1>
-
-<li>
-<Link className='navLinks' to='/Lan'>
-         API useContext
-          </Link>
-          </li>
-
-         </ul>
-
-</div>
+      <h1 className="access">mistake: {mistakes[0].mistake}</h1>
+      <h1 className="access">Best Suggestion: {mistakes[0].bestSuggestion}</h1>
     </div>
-    
-    );
+  );
 };
 
 export default Api;
+
 
 
 //   <TextArea spellcheck={true} defaultValue={initialText} />
